@@ -1,100 +1,213 @@
-import Image from "next/image";
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { Calendar, Clock, Settings, ChevronRight } from 'lucide-react';
+import { Playfair_Display, Cormorant } from 'next/font/google';
+
+const playfair = Playfair_Display({ subsets: ['latin'] });
+const cormorant = Cormorant({ subsets: ['latin'] });
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isScrolled, setIsScrolled] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className={`min-h-screen ${cormorant.className}`} style={{ backgroundColor: '#f5f1ed' }}>
+      {/* Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-[#252323]/80 backdrop-blur-md border-b border-[#a99985]/20 shadow-lg' 
+          : 'bg-transparent'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className={`text-2xl font-bold text-[#a99985] ${playfair.className}`}>Bracquet</div>
+            <div className="flex space-x-8 text-lg">
+              <a href="#features" className="text-[#e3d4c1] hover:text-[#252323] transition-colors">Solutions</a>
+              <a href="#about" className="text-[#e3d4c1] hover:text-[#252323] transition-colors">About</a>
+              <a href="#contact" className="text-[#e3d4c1] hover:text-[#252323] transition-colors">Contact</a>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="relative min-h-screen flex items-center justify-center pt-16" 
+           style={{ 
+             background: 'linear-gradient(135deg, #252323 0%, #70798c 100%)'
+           }}>
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 right-0 h-96 bg-[#a99985] blur-[120px] opacity-[0.15]"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center relative z-10">
+          <span className="text-[#dad2bc] font-medium tracking-wider">TENNIS & PICKLEBALL MANAGEMENT</span>
+          <h1 className={`text-6xl text-[#f5f1ed] mb-6 mt-4 ${playfair.className}`}>
+            Personalized Court Management <br />Solutions for Elite Clubs
+          </h1>
+          <p className="text-xl text-[#dad2bc] mb-12 max-w-2xl mx-auto">
+            We craft custom tennis and pickleball booking platforms tailored to your club's unique traditions, rules, and member preferences.
+          </p>
+          <button 
+            style={{ backgroundColor: '#a99985' }} 
+            className="hover:opacity-90 text-[#252323] px-8 py-4 rounded-none text-lg inline-flex items-center transition-all duration-300 hover:scale-105"
+          >
+            Request Custom Solution
+            <ChevronRight className="ml-2" />
+          </button>
+        </div>
+      </div>
+
+      {/* Features Section */}
+      <div id="features" className="py-24" style={{ backgroundColor: '#f5f1ed' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-4">
+            <span className="text-[#70798c] font-medium tracking-wider">SOLUTIONS</span>
+          </div>
+          <h2 className={`text-4xl font-bold text-center mb-16 text-[#252323] ${playfair.className}`}>
+            Custom Solutions Tailored to Your Club
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Calendar className="w-full h-full text-[#70798c]" />,
+                title: "Customized Scheduling Rules",
+                description: "Built around your club's unique booking policies, member categories, and court allocation preferences."
+              },
+              {
+                icon: <Clock className="w-full h-full text-[#70798c]" />,
+                title: "Tailored Time Management",
+                description: "Custom peak time rules, waitlist management, and rotation systems designed for your membership structure."
+              },
+              {
+                icon: <Settings className="w-full h-full text-[#70798c]" />,
+                title: "Seamless Integration",
+                description: "Built to work with your existing club management software and member database systems."
+              }
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="p-8 rounded-none shadow-lg transform hover:scale-105 transition-transform duration-300 border border-[#a99985]/20"
+                style={{ 
+                  backgroundColor: '#dad2bc'
+                }}
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 mb-6 relative">
+                    <div className="absolute inset-0 bg-[#70798c] blur-[20px] opacity-20"></div>
+                    {feature.icon}
+                  </div>
+                  <h3 className={`text-2xl font-semibold mb-4 text-[#252323] ${playfair.className}`}>{feature.title}</h3>
+                  <p className="text-[#252323]/80">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* About Section */}
+      <div id="about" className="py-24 relative overflow-hidden" 
+           style={{ backgroundColor: '#252323' }}>
+        <div className="absolute inset-0">
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#a99985] blur-[100px] opacity-10"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#a99985] blur-[100px] opacity-10"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-4">
+            <span className="text-[#dad2bc] font-medium tracking-wider">ABOUT US</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className={`text-4xl font-bold mb-8 text-[#f5f1ed] ${playfair.className}`}>Crafting Elite Club Experiences</h2>
+              <p className="text-[#dad2bc] mb-6 text-lg">
+                At Bracquet, we specialize in creating bespoke booking solutions for prestigious tennis and pickleball facilities. Unlike one-size-fits-all platforms, we build custom systems that preserve and enhance your club's unique character and traditions.
+              </p>
+              <p className="text-[#dad2bc] text-lg">
+                Founded by club industry veterans, we understand that each club's needs are unique. Our team works closely with you to develop a solution that reflects your club's values, upholds its traditions, and delights your members.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[...Array(4)].map((_, index) => (
+                <div key={index} className="aspect-square rounded-none shadow-lg relative overflow-hidden border border-[#a99985]/10">
+                  <div className={`absolute inset-0 bg-gradient-to-${['br', 'bl', 'tr', 'tl'][index]} from-[#70798c] to-[#252323]`}></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div id="contact" className="py-24" style={{ backgroundColor: '#f5f1ed' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <span className="text-[#70798c] font-medium tracking-wider">GET IN TOUCH</span>
+            <h2 className={`text-4xl font-bold text-[#252323] mt-4 mb-8 ${playfair.className}`}>Ready to Elevate Your Club's Experience?</h2>
+            <p className="text-[#252323]/80 mb-12 max-w-2xl mx-auto text-lg">
+              Contact us to discuss how we can create a custom solution that perfectly matches your club's needs.
+            </p>
+            <div className="flex justify-center space-x-4">
+              <button 
+                style={{ backgroundColor: '#70798c' }} 
+                className="hover:opacity-90 text-[#f5f1ed] px-8 py-4 rounded-none text-lg transition-all duration-300 hover:scale-105"
+              >
+                Schedule a Consultation
+              </button>
+              <button 
+                className="border-2 border-[#70798c] text-[#70798c] px-8 py-4 rounded-none text-lg transition-all duration-300 hover:scale-105"
+              >
+                View Case Studies
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="py-12 border-t border-[#a99985]/20" style={{ backgroundColor: '#252323' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div className={`text-2xl font-bold text-[#f5f1ed] mb-4 ${playfair.className}`}>Bracquet</div>
+              <p className="text-[#dad2bc]">Creating bespoke court management solutions for prestigious clubs.</p>
+            </div>
+            <div>
+              <h3 className={`text-[#f5f1ed] font-semibold mb-4 ${playfair.className}`}>Solutions</h3>
+              <ul className="space-y-2 text-[#dad2bc]">
+                <li>Custom Development</li>
+                <li>Integration Services</li>
+                <li>Consulting</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className={`text-[#f5f1ed] font-semibold mb-4 ${playfair.className}`}>Company</h3>
+              <ul className="space-y-2 text-[#dad2bc]">
+                <li>About</li>
+                <li>Case Studies</li>
+                <li>Contact</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className={`text-[#f5f1ed] font-semibold mb-4 ${playfair.className}`}>Legal</h3>
+              <ul className="space-y-2 text-[#dad2bc]">
+                <li>Privacy Policy</li>
+                <li>Terms of Service</li>
+                <li>Cookie Policy</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-[#a99985]/20 mt-12 pt-8 text-center text-[#dad2bc]">
+            <p>&copy; 2025 Bracquet. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
