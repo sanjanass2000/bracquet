@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, Settings, ChevronRight } from 'lucide-react';
 import { Playfair_Display, Cormorant } from 'next/font/google';
+import SolutionsRoadmap from '@/components/SolutionsRoadmap';
 
 const playfair = Playfair_Display({ subsets: ['latin'] });
 const cormorant = Cormorant({ subsets: ['latin'] });
@@ -112,6 +113,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Solutions Roadmap Section */}
+      <SolutionsRoadmap />
 
       {/* About Section */}
       <div id="about" className="py-24 relative overflow-hidden" 
