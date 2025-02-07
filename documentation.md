@@ -1,4 +1,36 @@
-## Documentation for Bracquet - Personalized Solutions for Luxury Raqcuet Clubs
+# Documentation for Bracquets - Personalized Automation Solutions for Luxury Racquet Clubs --> convert to app (React Native)
+
+# Chandler's Points (for BCC)
+##### Cap on member bookings and render bookings for only 2 weeks at a time (timeline can be adjusted later)
+##### Consultation for member to be paired with tennis instructor -> joey adds pairing for member id-coach id
+##### add more accurate data (package information, court reservations,  kids registration)
+##### create mobile app for push notifications for easy access when on court
+##### add for pickleball/padel (according to club)
+##### dropdown of lesson duration times before booking (30 min, 1 hour, 1 hr 30)
+##### ability to create new booking and choose which family member next booking is for
+
+### members that refuse to use website/app can call or email -> admin will update 
+### guests (non-members) of resort or club can call or email -> admin will update
+
+# AI Intelligence
+##### help members schedule with coaches
+##### help assign appropriate and correct # of coaches for clinics/kids clinics
+##### identify coaches' strongest environments (ex.. Sanj with 5-8 year old kids, Jesse for hitting practice)
+##### extract key insights for growth in revenue, members
+##### nurture new members
+##### help in event planning - timing, which staff to place, organization
+##### can recommend members to lessons/clinics and even tournaments according to progress
+##### similar to claude artifacts -> interactive outputs
+##### OVERALL GOAL: understand everyone's schedules so time is given back to members, admin, and director
+
+# additional features
+##### dark mode for members/staff when local time is 5 PM/ light mode when local time is 6 AM
+##### tennis court UI rendering for members
+##### tennis court UI /schedule for admin
+##### member spotlight of the week
+##### invoices?
+##### add branding customization for each club
+
 
 
 # Points to add when speaking:
@@ -13,7 +45,7 @@
     - Member highlights, member of the week, spotlight tournament winners!
 
 
-All Requirements: 
+# All Requirements for white-label solution: 
 
 1. Functional Requirements
 1.1. Customization & Branding
