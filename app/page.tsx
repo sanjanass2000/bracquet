@@ -225,6 +225,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Navbar from './components/Navbar';
+import DashboardCards from './components/DashboardCards';
 import { ChevronRight, Calendar, Clock, Settings } from 'lucide-react';
 import { url } from 'inspector';
 
@@ -327,11 +328,12 @@ export default function Home() {
                 Learn More
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <DashboardCards />
+            {/* <div className="grid grid-cols-2 gap-4">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="aspect-square bg-neutral-800 rounded-lg" />
+                <div key={i} className="aspect-square bg-white rounded-lg" />
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -342,7 +344,7 @@ export default function Home() {
           <span className="text-[var(--neutral-brown)] font-medium">GET IN TOUCH</span>
           <h2 className="text-4xl text-[var(--neutral-brown)] font-mono mt-4 mb-8">Ready to Elevate Your Club's Experience?</h2>
           <p className="text-neutral-600 mb-12 max-w-2xl mx-auto text-lg fobt-mono">
-            Contact us to discuss how we can create a custom solution that perfectly matches your club's needs.
+            Contact us to discuss how we can create a custom solution that perfectly matches your club's needs. We pride ourselves in our attention to detail for you.
           </p>
           <button className="bg-[var(--neutral-brown)] text-white px-8 py-4 rounded-full inline-flex items-center gap-2 hover:bg-[#FF3232]/90 transition-colors">
             Schedule a Consultation
