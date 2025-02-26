@@ -1,16 +1,24 @@
-// File: app/page.tsx
 'use client';
 
-import Navbar from './components/Navbar';
+// Remove unused Navbar import
 import DashboardCards from './components/DashboardCards';
 import SolutionsRoadmap from '../components/SolutionsRoadmap';
 import { Calendar, Clock, Settings } from 'lucide-react';
 
-// Import new enhanced components
-import EnhancedHero from './components/EnhancedHero';
+// Import enhanced components - update the path if needed based on where you saved the file
+import { 
+  EnhancedNavbar,
+  AnimatedHero, 
+  AIIntelligenceSection, 
+  ROICalculator, 
+  EnhancedCaseStudySection 
+} from '../components/EnhancedUIComponents';
+
+// Keep your existing component imports
 import TestimonialsSection from '../components/TestimonialsSection';
-import CaseStudySection from '../components/CaseStudySection';
+// Remove unused CaseStudySection import
 import ContactFormSection from '../components/ContactFormSection';
+import Footer from '../components/Footer';
 
 const features = [
   {
@@ -32,13 +40,14 @@ const features = [
 
 export default function Home() {
   return (
-    <main className={`min-h-screen bg-neutral-50`}>
-      <Navbar />
+    <main className="min-h-screen bg-neutral-50">
+      {/* Use enhanced navbar instead of original */}
+      <EnhancedNavbar />
       
-      {/* Enhanced Hero Section */}
-      <EnhancedHero />
+      {/* Use animated hero instead of original EnhancedHero */}
+      <AnimatedHero />
 
-      {/* Features Section */}
+      {/* Features Section - keep as is */}
       <section id="features" className="py-24 bg-[var(--neutral-light)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -65,21 +74,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Solutions Roadmap Section */}
+      {/* Add new AI Intelligence Section */}
+      <AIIntelligenceSection />
+
+      {/* Add new ROI Calculator Section */}
+      <ROICalculator />
+
+      {/* Solutions Roadmap Section - keep as is */}
       <SolutionsRoadmap />
       
-      {/* Testimonials Section */}
+      {/* Testimonials Section - keep as is */}
       <TestimonialsSection />
       
-      {/* Case Study Section */}
-      <CaseStudySection />
+      {/* Replace original case study with enhanced version */}
+      <EnhancedCaseStudySection />
 
-      {/* About Section */}
+      {/* About Section - keep as is */}
       <section id="about" className="py-24 bg-neutral-900 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-[#0077BE] font-medium">ABOUT US</span>
+              <span className="text-[var(--primary-blue)] font-medium">ABOUT US</span>
               <h2 className="text-4xl font-mono mt-4 mb-8">The Bracquets Approach</h2>
               <p className="text-neutral-300 text-lg mb-6">
                 Founded by former club managers and tennis professionals, Bracquets was born from firsthand experience with the limitations of generic booking systems.
@@ -99,8 +114,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Form Section */}
+      {/* Contact Form Section - keep as is */}
       <ContactFormSection />
+
+      {/* Footer - keep as is */}
+      <Footer />
     </main>
   );
 }
