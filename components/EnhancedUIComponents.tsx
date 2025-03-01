@@ -531,3 +531,179 @@ export const EnhancedCaseStudySection = () => {
     </section>
   );
 };
+
+export const UIComponents = () => {
+  return (
+    <>
+      <AIIntelligenceSection />
+      <ROICalculator />
+      <EnhancedCaseStudySection />
+      <ContactFormSection />
+      <TestimonialsSection />
+    </>
+  );
+};
+
+// Add the ContactFormSection component
+export const ContactFormSection = () => {
+  return (
+    <section id="contact" className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <span className="text-[var(--primary-blue)] font-medium tracking-wider">GET IN TOUCH</span>
+          <h2 className="text-3xl font-mono font-semibold mt-2 mb-4 text-[var(--neutral-dark)]">
+            Schedule a Demo
+          </h2>
+          <p className="text-[var(--neutral-brown)] max-w-2xl mx-auto">
+            See how our solutions can transform your club's operations
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          <div className="bg-[var(--neutral-light)] p-8 rounded-xl">
+            <form className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-[var(--neutral-brown)] mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-[var(--neutral-brown)] mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-[var(--neutral-brown)] mb-1">
+                  Club Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-[var(--neutral-brown)] mb-1">
+                  Message
+                </label>
+                <textarea
+                  rows={4}
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                ></textarea>
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full bg-[var(--neutral-brown)] hover:bg-[var(--primary-blue)] text-white py-3 px-6 rounded-full transition-colors"
+              >
+                Request Demo
+              </button>
+            </form>
+          </div>
+          
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-[var(--neutral-dark)]">
+                Why Schedule a Demo?
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <CheckCircle className="text-green-500 mr-2 mt-1 flex-shrink-0" size={18} />
+                  <span className="text-[var(--neutral-brown)]">
+                    See our intelligent court management system in action
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="text-green-500 mr-2 mt-1 flex-shrink-0" size={18} />
+                  <span className="text-[var(--neutral-brown)]">
+                    Get a personalized ROI analysis for your club
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="text-green-500 mr-2 mt-1 flex-shrink-0" size={18} />
+                  <span className="text-[var(--neutral-brown)]">
+                    Learn about our implementation process and timeline
+                  </span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-[var(--primary-blue)]/10 to-[var(--neutral-brown)]/10 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3 text-[var(--neutral-dark)]">
+                Ready to Transform Your Club?
+              </h3>
+              <p className="text-[var(--neutral-brown)]">
+                Join the growing number of prestigious clubs using our solutions to optimize their operations and enhance member experience.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Add the TestimonialsSection component
+export const TestimonialsSection = () => {
+  return (
+    <section className="py-24 bg-[var(--neutral-light)]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <span className="text-[var(--primary-blue)] font-medium tracking-wider">TESTIMONIALS</span>
+          <h2 className="text-4xl mt-2 font-mono font-semibold text-[var(--neutral-dark)]">
+            What Our Clients Say
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              name: "Sarah Thompson",
+              role: "Club Manager",
+              club: "Oakridge Tennis Club",
+              quote: "The intelligent scheduling system has transformed how we manage our courts. Member satisfaction is at an all-time high."
+            },
+            {
+              name: "Michael Chen",
+              role: "Operations Director",
+              club: "Westside Athletic Club",
+              quote: "Implementation was smooth and the ROI has exceeded our expectations. The analytics provide invaluable insights."
+            },
+            {
+              name: "Amanda Rodriguez",
+              role: "Tennis Director",
+              club: "Harbor Point Sports",
+              quote: "The automated court management has freed up our staff to focus on what matters most - our members."
+            }
+          ].map((testimonial, i) => (
+            <div key={i} className="bg-white p-6 rounded-xl shadow-md">
+              <div className="mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400">★</span>
+                ))}
+              </div>
+              <p className="text-[var(--neutral-brown)] mb-6 italic">
+                "{testimonial.quote}"
+              </p>
+              <div>
+                <p className="font-semibold text-[var(--neutral-dark)]">{testimonial.name}</p>
+                <p className="text-sm text-[var(--neutral-brown)]">{testimonial.role}</p>
+                <p className="text-sm text-[var(--primary-blue)]">{testimonial.club}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

@@ -11,6 +11,18 @@
   --neutral-light: #E8E4E1;
   --background: #ffffff;
   --foreground: #171717;
+  --terminal-glow: rgba(144, 238, 144, 0.15);
+  --terminal-green: rgb(144, 238, 144);
+  --terminal-bg: #000000;
+  --terminal-window: rgba(16, 16, 16, 0.95);
+  --gradient-1: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+  --gradient-2: linear-gradient(to bottom, rgba(128, 0, 255, 0.1), transparent);
+  /* --gradient-start: #0a0f1c;
+  --gradient-mid: #1a1625;
+  --gradient-end: #1f1215; */
+  --gradient-start: #0a0908;
+  --gradient-mid: #32281e;
+  --gradient-end: #3d2c1f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +34,12 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start) 0%,
+    var(--gradient-mid) 50%,
+    var(--gradient-end) 100%
+  );
   font-family: var(--font-montserrat), system-ui, sans-serif;
 }
 
@@ -52,4 +69,157 @@ body {
 
 .animation-delay-4000 {
   animation-delay: 4s;
+}
+
+.terminal-container {
+  background: var(--terminal-window);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.terminal-content {
+  padding: 24px;
+  font-family: 'Menlo', Monaco, 'Courier New', monospace;
+}
+
+.glow-text {
+  color: var(--terminal-green);
+  text-shadow: 0 0 10px var(--terminal-glow);
+}
+
+.command-line::before {
+  content: '>';
+  color: var(--terminal-green);
+  margin-right: 8px;
+}
+
+.typing-effect {
+  overflow: hidden;
+  border-right: 2px solid var(--terminal-green);
+  white-space: pre-wrap;
+  animation: typing 3.5s steps(40, end),
+             blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--terminal-green) }
+}
+
+.feature-card {
+  background: rgba(16, 16, 16, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: var(--terminal-green);
+  box-shadow: 0 0 20px var(--terminal-glow);
+}
+
+.terminal-window {
+  position: relative;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.terminal-window::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-1);
+  pointer-events: none;
+}
+
+/* Gradient backgrounds */
+.gradient-bg-1 {
+  background: var(--gradient-2);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glass effect */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Image placeholders */
+.image-placeholder {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+}
+
+/* Grainy noise effect */
+.grainy {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.4;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Gradient overlay for sections */
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Glow effects */
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.hover-glow:hover .glow {
+  opacity: 1;
 }

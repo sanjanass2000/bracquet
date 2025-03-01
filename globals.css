@@ -1,0 +1,32 @@
+:root {
+  --font-primary: 'Geist', sans-serif;
+  --font-secondary: 'Geist Mono', monospace;
+  --color-primary: #0077BE;
+  --color-secondary: #8B7355;
+  --color-accent: #FF3232;
+  --color-neutral-light: #F5F5F5;
+  --color-neutral-dark: #333333;
+  --color-neutral-brown: #8B7355;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-neutral-dark);
+  background-color: var(--color-neutral-light);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  color: var(--color-neutral-dark);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--color-accent);
+} 
